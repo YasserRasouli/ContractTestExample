@@ -1,0 +1,155 @@
+{
+  "consumer": {
+    "name": "My Consumer"
+  },
+  "interactions": [
+    {
+      "description": "A valid request for an specific order",
+      "providerStates": [
+        {
+          "name": "an order with ID=2 exists",
+          "params": {
+            "id": 2
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/orders/GetOrderById",
+        "query": {
+          "id": [
+            "2"
+          ]
+        }
+      },
+      "response": {
+        "body": {
+          "id": 2,
+          "name": "laptop"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$.name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "A valid request for all orders",
+      "providerStates": [
+        {
+          "name": "three orders exist"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/api/orders/GetOrders"
+      },
+      "response": {
+        "body": [
+          {
+            "id": 2082634451,
+            "name": "267229602"
+          },
+          {
+            "id": 1104694778,
+            "name": "941514334"
+          },
+          {
+            "id": 885169950,
+            "name": "753860158"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "matchingRules": {
+          "body": {
+            "$[0].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[0].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[1].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[1].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[2].id": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            },
+            "$[2].name": {
+              "combine": "AND",
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ]
+            }
+          },
+          "header": {}
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "My Provider"
+  }
+}
